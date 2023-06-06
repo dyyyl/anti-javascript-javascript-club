@@ -97,6 +97,7 @@ img {
   place-self: center;
 
   max-width: 90vw;
+  max-height: 90vh;
 }
 
 img::selection {
