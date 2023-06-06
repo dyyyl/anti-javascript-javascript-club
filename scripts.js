@@ -1,11 +1,12 @@
 // What we wanna say.
-const TEXT = 'Press me daddy';
+const TEXT = 'Let the JavaScript cunsume you.';
 
 // How we wanna say it.
 const utterance = new SpeechSynthesisUtterance(TEXT);
 utterance.lang = 'en-US';
-utterance.pitch = 2;
-utterance.rate = 0.85;
+utterance.voice = speechSynthesis.getVoices().filter(voice => voice.lang === 'en-US')[27];
+utterance.pitch = 0.85;
+utterance.rate = 0.65;
 
 // What we wanna do.
 const handleClick = () => {
