@@ -1,5 +1,5 @@
 // What we wanna say.
-const TEXT = 'Let the JavaScript cunsume you.';
+const TEXT = 'Let the JavaScript cunsume you.'; // Misspelled on purpose for better pronunciation.
 
 // How we wanna say it.
 const utterance = new SpeechSynthesisUtterance(TEXT);
