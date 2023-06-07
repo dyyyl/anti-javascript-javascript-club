@@ -4,7 +4,7 @@ const TEXT = 'Let the JavaScript cunsume you.'; // Misspelled on purpose for bet
 // How we wanna say it.
 const utterance = new SpeechSynthesisUtterance(TEXT);
 utterance.lang = 'en-US';
-utterance.voice = speechSynthesis.getVoices().filter(voice => voice.lang === 'en-US')[27];
+utterance.voice = speechSynthesis.getVoices().filter(voice => voice.name === 'Zarvox')[0];
 utterance.pitch = 0.85;
 utterance.rate = 0.65;
 
