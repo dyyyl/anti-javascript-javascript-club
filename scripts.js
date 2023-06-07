@@ -27,3 +27,20 @@ const debounce = (callback, wait) => {
 
 // Debounce the function.
 const debouncedHandleClick = debounce(handleClick, 250);
+
+// Fuck with the title
+const TITLE = 'ANTI-JAVASCRIPT-JAVASCRIPT-CLUB|'.split('');
+
+const titleLoop = (count = 0, title = ['']) => {
+  title = [...title, TITLE[count]];
+
+  const nextCount = count === 33 ? 0 : count + 1;
+
+  if (title.length === 18) title.shift();
+
+  document.title = title.join(' ');
+
+  setTimeout(() => titleLoop(nextCount, title), 500);
+}
+
+titleLoop();
