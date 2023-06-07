@@ -40,7 +40,7 @@ const titleLoop = (count = 0, title = ['']) => {
 
   document.title = title.join(' ');
 
-  setTimeout(() => titleLoop(nextCount, title), 500);
+  setTimeout(() => titleLoop(nextCount, title), 300);
 }
 
 titleLoop();
