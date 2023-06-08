@@ -15,14 +15,14 @@ const handleClick = () => {
 
 // Debounce function.
 const debounce = (callback, wait) => {
-    let timeoutId = null;
+  let timeoutId = null;
 
-    return (...args) => {
-      window.clearTimeout(timeoutId);
-      timeoutId = window.setTimeout(() => {
-        callback(...args);
-      }, wait);
-    };
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      callback(...args);
+    }, wait);
+  };
 }
 
 // Debounce the function.
