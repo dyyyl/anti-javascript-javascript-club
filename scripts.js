@@ -4,12 +4,18 @@ const TEXT = 'Let the JavaScript cunsume you.'; // Misspelled on purpose for bet
 // How we wanna say it.
 const utterance = new SpeechSynthesisUtterance(TEXT);
 utterance.lang = 'en-US';
-utterance.voice = speechSynthesis.getVoices().filter(voice => voice.name === 'Zarvox')[0];
-utterance.pitch = 0.85;
-utterance.rate = 0.65;
 
 // What we wanna do.
 const handleClick = () => {
+  // So this is fun. Browsers will currently let you cahnge the voice, but getVoices()
+  // is not yet adequetly implemented on first paint. For now, we just split the differance
+  // and set our preferred voice with this handy little null check.
+  if (utterance.voice === null) {
+    utterance.voice = speechSynthesis.getVoices().filter(voice => voice.name === 'Zarvox')[0];
+    utterance.pitch = 0.85;
+    utterance.rate = 0.65;
+  }
+
   window.speechSynthesis.speak(utterance);
 }
 
@@ -28,7 +34,7 @@ const debounce = (callback, wait) => {
 // Debounce the function.
 const debouncedHandleClick = debounce(handleClick, 250);
 
-// Fuck with the title
+// Fuck with the title.
 const TITLE = 'ANTI-JAVASCRIPT-JAVASCRIPT-CLUB|'.split('');
 
 const titleLoop = (count = 0, title = ['']) => {
@@ -43,4 +49,5 @@ const titleLoop = (count = 0, title = ['']) => {
   setTimeout(() => titleLoop(nextCount, title), 300);
 }
 
+// You spin me right round.
 titleLoop();
