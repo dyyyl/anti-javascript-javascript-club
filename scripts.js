@@ -4,18 +4,20 @@ const TEXT = 'Let the JavaScript cunsume you.'; // Misspelled on purpose for bet
 // How we wanna say it.
 const utterance = new SpeechSynthesisUtterance(TEXT);
 utterance.lang = 'en-US';
+utterance.pitch = 0.85;
+utterance.rate = 0.65;
+// According to Web Speech API Errata (E11 2013-10-17), the voice list is loaded async to the page. 
+// An onvoiceschanged event is fired when they are loaded.
+// So, the trick is to set your voice from the callback for that event listener:
+window.speechSynthesis.onvoiceschanged = function() {
+  const voices = speechSynthesis.getVoices();
+  const zarvox = voices.filter(voice => voice.name === 'Zarvox')[0];
+
+  utterance.voice = zarvox;
+};
 
 // What we wanna do.
 const handleClick = () => {
-  // So this is fun. Browsers will currently let you cahnge the voice, but getVoices()
-  // is not yet adequetly implemented on first paint. For now, we just split the differance
-  // and set our preferred voice with this handy little null check.
-  if (utterance.voice === null) {
-    utterance.voice = speechSynthesis.getVoices().filter(voice => voice.name === 'Zarvox')[0];
-    utterance.pitch = 0.85;
-    utterance.rate = 0.65;
-  }
-
   window.speechSynthesis.speak(utterance);
 }
 
